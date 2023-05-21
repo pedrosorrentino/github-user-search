@@ -39,25 +39,6 @@ const NavBar = () => {
             />
           </>
         )}
-        {/* {darktheme ? (
-          <>
-            <p>DARK</p>
-            <MoonIcon
-              width={20}
-              height={20}
-              className="fill-slate-800 dark:fill-white"
-            />
-          </>
-        ) : (
-          <>
-            <p>LIGHT</p>
-            <SunIcon
-              width={20}
-              height={20}
-              className="fill-slate-800 dark:fill-white"
-            />
-          </>
-        )} */}
       </button>
     </header>
   )
