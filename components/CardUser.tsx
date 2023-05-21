@@ -13,7 +13,7 @@ interface Props {
 
 const CardUser = ({ user }: Props) => {
   return (
-    <div className="m-5 rounded-xl bg-[#1f2a48] p-8 text-white md:w-[800px]">
+    <div className="m-5 rounded-xl bg-[#1f2a48] p-8 text-white shadow-xl md:w-[800px]">
       <div className="mb-10 flex items-center gap-5 ">
         <div>
           <Image
@@ -24,16 +24,16 @@ const CardUser = ({ user }: Props) => {
             className="rounded-full"
           />
         </div>
-        <div>
-          <h2 className="text-lg font-bold">{user.name}</h2>
-          <p className="text-blue-500">@{user.login}</p>
-          <p className="text-slate-500">
+        <div className="grid w-full items-center sm:grid-cols-2">
+          <h2 className="text-xl font-bold sm:text-3xl">{user.name}</h2>
+          <p className="text-slate-500 sm:text-right">
             Joined {dateFormatted(user.created_at)}
           </p>
+          <p className="text-blue-500">@{user.login}</p>
         </div>
       </div>
 
-      <div className="mb-10">{user.bio}</div>
+      <div className="mb-10">{user.bio || "Don´t have Bio"}</div>
 
       <div className="mb-10 flex justify-around rounded-lg bg-[#141C2F] p-4 ">
         <div>
@@ -59,7 +59,7 @@ const CardUser = ({ user }: Props) => {
           <LinkIcon width={20} height={20} className="fill-white" />
           {user.blog ? (
             <Link
-              className="flex gap-3 hover:underline"
+              className="flex gap-3 truncate hover:underline"
               href={user.blog}
               title={`Personal Web`}
               target="_blank"
