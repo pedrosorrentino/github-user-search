@@ -3,75 +3,98 @@ import LinkIcon from "./icons/LinkIcon"
 import TwitterIcon from "./icons/TwitterIcon"
 import BuildingIcon from "./icons/BuildingIcon"
 import Image from "next/image"
+import { UserGithub } from "@/interfaces/UserGithub"
+import { dateFormatted } from "@/utils"
+import Link from "next/link"
 
-const CardUser = () => {
+interface Props {
+  user: UserGithub
+}
+
+const CardUser = ({ user }: Props) => {
   return (
     <div className="m-5 rounded-xl bg-[#1f2a48] p-8 text-white md:w-[800px]">
       <div className="mb-10 flex items-center gap-5 ">
         <div>
-          {/* <Image
-            width={20}
-            height={20}
+          <Image
+            width={100}
+            height={100}
             alt="Avatar"
-            src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
-          /> */}
-          <img
-            className="w-20"
-            src="https://avataaars.io/?avatarStyle=Circle&topType=LongHairStraight&accessoriesType=Blank&hairColor=BrownDark&facialHairType=Blank&clotheType=BlazerShirt&eyeType=Default&eyebrowType=Default&mouthType=Default&skinColor=Light"
+            src={user.avatar_url}
+            className="rounded-full"
           />
         </div>
         <div>
-          <h2 className="text-lg font-bold">Username</h2>
-          <p className="text-blue-500">Tag name</p>
-          <p>User join</p>
+          <h2 className="text-lg font-bold">{user.name}</h2>
+          <p className="text-blue-500">@{user.login}</p>
+          <p className="text-slate-500">
+            Joined {dateFormatted(user.created_at)}
+          </p>
         </div>
       </div>
 
-      <div className="mb-10">
-        Lorem Ipsum es simplemente el texto de relleno de las imprentas y
-        archivos de texto. Lorem Ipsum ha sido el texto de relleno estándar de
-        las industrias desde el año 1500, cuando un impresor (N. del T. persona
-        que se dedica a la imprenta) desconocido usó una galería de textos y los
-        mezcló de tal manera que logró hacer un libro de textos especimen. No
-        sólo sobrevivió 500 años, sino que tambien ingresó como texto de relleno
-        en documentos electrónicos, quedando esencialmente igual al original.
-        Fue popularizado en los 60s con la creación de las hojas "Letraset", las
-        cuales contenian pasajes de Lorem Ipsum, y más recientemente con
-        software de autoedición, como por ejemplo Aldus PageMaker, el cual
-        incluye versiones de Lorem Ipsum.
-      </div>
+      <div className="mb-10">{user.bio}</div>
 
       <div className="mb-10 flex justify-around rounded-lg bg-[#141C2F] p-4 ">
         <div>
           <h3>Repos</h3>
-          <p className="text-center font-bold">8</p>
+          <p className="text-center font-bold">{user.public_repos}</p>
         </div>
         <div>
           <h3>Followers</h3>
-          <p className="text-center font-bold">8</p>
+          <p className="text-center font-bold">{user.followers}</p>
         </div>
         <div>
           <h3>Following</h3>
-          <p className="text-center font-bold">8</p>
+          <p className="text-center font-bold">{user.following}</p>
         </div>
       </div>
 
       <div className="grid gap-4 md:grid-cols-2">
-        <div className="flex gap-3">
+        <div className="flex items-center gap-3">
           <LocationIcon width={20} height={20} className="fill-white" />
-          <p>San Francisco</p>
+          <p>{user.location}</p>
         </div>
-        <div className="flex gap-3">
+        <div className="flex items-center gap-3">
           <LinkIcon width={20} height={20} className="fill-white" />
-          <p>https://github.xom</p>
+          {user.blog ? (
+            <Link
+              className="flex gap-3 hover:underline"
+              href={user.blog}
+              title={`Personal Web`}
+              target="_blank"
+            >
+              {user.blog}
+            </Link>
+          ) : (
+            "Not Found"
+          )}
         </div>
-        <div className="flex gap-3">
+        <div className="flex items-center gap-3">
           <TwitterIcon width={20} height={20} className="fill-white" />
-          <p>@twittergituhb</p>
+          {user.twitter_username ? (
+            <Link
+              className="flex gap-3 hover:underline"
+              href={`https://twitter.com/${user.twitter_username}`}
+              title={`Twitter Profile`}
+              target="_blank"
+            >
+              <p>@{user.twitter_username}</p>
+            </Link>
+          ) : (
+            "Not Found"
+          )}
         </div>
-        <div className="flex gap-3">
+        <div className="flex items-center gap-3">
           <BuildingIcon width={20} height={20} className="fill-white" />
-          <p>@profilegithub</p>
+          <Link
+            className="hover:underline"
+            href={user.html_url}
+            title={`Github Profile`}
+            target="_blank"
+          >
+            {user.login}
+          </Link>
         </div>
       </div>
     </div>

@@ -1,10 +1,25 @@
 import SearchIcon from "./icons/SearchIcon"
 
-const SearchBar = () => {
+interface Props {
+  getUser: (userName: string) => Promise<void>
+}
+
+const SearchBar = ({ getUser }: Props) => {
+  const handleSubmit = async (e: React.FormEvent<HTMLFormElement>) => {
+    e.preventDefault()
+    const userName = e.currentTarget.username.value
+    if (!userName) return
+    await getUser(userName)
+  }
+
   return (
-    <form className="mx-5 my-5 flex items-center justify-center gap-2 rounded-xl bg-[#1f2a48] p-2 md:w-[800px]">
+    <form
+      onSubmit={handleSubmit}
+      className="mx-5 my-5 flex items-center justify-center gap-2 rounded-xl bg-[#1f2a48] p-2 md:w-[800px]"
+    >
       <SearchIcon width={35} height={35} className="fill-blue-400" />
       <input
+        name="username"
         className="w-full bg-transparent text-white placeholder:text-white focus:outline-none"
         placeholder="Search Github username..."
       />
