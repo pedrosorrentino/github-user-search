@@ -17,7 +17,7 @@ export default function RootLayout({
   return (
     <html lang="en">
       <body
-        className={`${spaceGrotesk.className} grid min-h-screen place-content-center bg-[#141C2F] tracking-widest`}
+        className={`${spaceGrotesk.className} grid min-h-screen place-content-center bg-slate-200 tracking-widest dark:bg-[#141C2F]`}
       >
         <NavBar />
         {children}

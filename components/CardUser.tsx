@@ -13,7 +13,7 @@ interface Props {
 
 const CardUser = ({ user }: Props) => {
   return (
-    <div className="m-5 rounded-xl bg-[#1f2a48] p-8 text-white shadow-xl md:w-[800px]">
+    <div className="m-5 rounded-xl bg-white p-8 text-slate-800 shadow-xl dark:bg-[#1f2a48] dark:text-white md:w-[800px]">
       <div className="mb-10 flex items-center gap-5 ">
         <div>
           <Image
@@ -35,7 +35,7 @@ const CardUser = ({ user }: Props) => {
 
       <div className="mb-10">{user.bio || "Don´t have Bio"}</div>
 
-      <div className="mb-10 flex justify-around rounded-lg bg-[#141C2F] p-4 ">
+      <div className="mb-10 flex justify-around rounded-lg bg-slate-200 p-4 dark:bg-[#141C2F] ">
         <div>
           <h3>Repos</h3>
           <p className="text-center font-bold">{user.public_repos}</p>
@@ -52,11 +52,19 @@ const CardUser = ({ user }: Props) => {
 
       <div className="grid gap-4 md:grid-cols-2">
         <div className="flex items-center gap-3">
-          <LocationIcon width={20} height={20} className="fill-white" />
+          <LocationIcon
+            width={20}
+            height={20}
+            className="fill-slate-800 dark:fill-white"
+          />
           <p>{user.location}</p>
         </div>
         <div className="flex items-center gap-3">
-          <LinkIcon width={20} height={20} className="fill-white" />
+          <LinkIcon
+            width={20}
+            height={20}
+            className="fill-slate-800 dark:fill-white"
+          />
           {user.blog ? (
             <Link
               className="flex gap-3 truncate hover:underline"
@@ -71,7 +79,11 @@ const CardUser = ({ user }: Props) => {
           )}
         </div>
         <div className="flex items-center gap-3">
-          <TwitterIcon width={20} height={20} className="fill-white" />
+          <TwitterIcon
+            width={20}
+            height={20}
+            className="fill-slate-800 dark:fill-white"
+          />
           {user.twitter_username ? (
             <Link
               className="flex gap-3 hover:underline"
@@ -86,7 +98,11 @@ const CardUser = ({ user }: Props) => {
           )}
         </div>
         <div className="flex items-center gap-3">
-          <BuildingIcon width={20} height={20} className="fill-white" />
+          <BuildingIcon
+            width={20}
+            height={20}
+            className="fill-slate-800 dark:fill-white"
+          />
           <Link
             className="hover:underline"
             href={user.html_url}

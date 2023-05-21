@@ -15,12 +15,12 @@ const SearchBar = ({ getUser }: Props) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-5 my-5 flex items-center justify-center gap-2 rounded-xl bg-[#1f2a48] p-2 shadow-lg md:w-[800px]"
+      className="mx-5 my-5 flex items-center justify-center gap-2 rounded-xl bg-white p-2 shadow-lg dark:bg-[#1f2a48] md:w-[800px]"
     >
       <SearchIcon width={35} height={35} className="fill-blue-400" />
       <input
         name="username"
-        className="w-full bg-transparent text-2xl text-white placeholder:text-white focus:outline-none"
+        className="w-full bg-transparent text-2xl text-slate-800 focus:outline-none dark:text-white placeholder:dark:text-white"
         placeholder="Search Github username..."
       />
       <button className="rounded-md bg-blue-500 p-4 font-bold tracking-widest text-white">
