@@ -15,7 +15,7 @@ const SearchBar = ({ getUser }: Props) => {
   return (
     <form
       onSubmit={handleSubmit}
-      className="mx-5 my-5 flex items-center justify-center gap-2 rounded-xl bg-white p-2 shadow-lg dark:bg-[#1f2a48] md:w-[800px]"
+      className="fade-in mx-5 my-5 flex items-center justify-center gap-2 rounded-xl bg-white p-2 shadow-lg dark:bg-[#1f2a48] md:w-[800px]"
     >
       <SearchIcon width={35} height={35} className="fill-blue-400" />
       <input

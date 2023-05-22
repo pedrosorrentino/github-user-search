@@ -13,7 +13,7 @@ interface Props {
 
 const CardUser = ({ user }: Props) => {
   return (
-    <div className="m-5 rounded-xl bg-white p-8 text-slate-800 shadow-xl dark:bg-[#1f2a48] dark:text-white md:w-[800px]">
+    <div className="fade-in m-5 rounded-xl bg-white p-8 text-slate-800 shadow-xl dark:bg-[#1f2a48] dark:text-white md:w-[800px] ">
       <div className="mb-10 flex items-center gap-5 ">
         <div>
           <Image
